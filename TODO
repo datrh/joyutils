@@ -1,0 +1,12 @@
+* Fix SideWinder FSP/FFW on Y-cable
+* CH Hat2 U R D L -> F1 F2 F3 F4 for Saitek sticks
+* Add full compatibility with new SNESKey and new DirectPad Pro (+ two PSX's)
+* Extend joy-thrustmaster.c to handle Y-cabled and chained devices
+* SpaceBall 2003 FLX and 3003 FLX
+* Logitech CyberMan
+* Genius MaxFire G-09 Force
+* Genius MaxFighter F-31D
+* Genius Flight2000 F-23 digital
+* Gravis Xterminator DualControl
+* Gravis GrIP MultiPort
+* Saitek Cyborg

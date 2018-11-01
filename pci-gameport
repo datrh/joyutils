@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script enables the legacy gameport (at 0x201) on various
+# PCI-based cards. It also disables other legacy features, so it
+# might have undesired effects on your card. Better use the right
+# sound driver to do the job
+
+# Trident 4DWave DX
+	setpci -d 1023:2000 44=20
+
+# Trident 4DWave NX
+	setpci -d 1023:2001 44=20
+
+# VIA ct82c686a
+	setpci -d 1106:3058 42=8
+
+# Yamaha YMF724
+	setpci -d 1073:000d 42=4

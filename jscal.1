@@ -1,0 +1,33 @@
+.TH JSCAL 1
+.SH NAME
+jscal \- joystick calibration program
+.SH SYNOPSIS
+.B jscal
+[options] <device-name>
+.SH DESCRIPTION
+.B jscal
+is a joystick calibration program for Linux joystick driver.
+.SH OPTIONS
+.TP
+.I \-c, --calibrate
+Calibrate the joystick.
+.TP
+.I \-h, --help
+Print out a summary of available options.
+.TP
+.I \-s <x,y,z...>, --set-correction <x,y,z...>
+Sets correction to specified values.
+.TP
+.I \-t --test-center
+Tests if the joystick is corectly calibrated. Returns 2 if the axes are
+not calibrated, 3 if buttons were pressed, 1 if there was any other
+error, and 0 on success.
+.TP
+.I \-V, --version
+Prints the version numbers.
+.TP
+.I \-p, --print-correction
+Prints the current correction settings. The format of the output is
+a jscal command line.
+.SH SEE ALSO
+\fBjstest\fP(1), \fBjsattach\fP(1).

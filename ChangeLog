@@ -1,0 +1,498 @@
+		Fixed throttle automagic calibration for Logitech WMED 3D
+		Fixed computing the number of 10-bit axes in joy-logitech
+		Fixed stream-based autotiming
+		Extended the timeout for joy-assassin, there seem to be timing glitches in the protocol
+		Added debug modes to joy-logitech and joy-sidewinder	
+		Added Firmware bug reporting to joy-logitech
+		Fixed joy-pci CHF mode, doc, and parameter parsing
+		Fixed __setup stuff
+		Fixed Makefile, Config.in everywhere
+		Added speed measurement to sidewinder driver
+		Added automatic gameport speed adjustment to logitech, gravis, thrustmaster, assassin and creative drivers
+		Dropped generic gameport speed measurement
+		Dropped kernel v2.0 support
+		Added several workarounds for Logitech ADI/USB device firmware bugs
+		Fixed analog joystick FCS/PXY interaction
+		Made a 4-axis, 4-button joystick the default instead of two 2-axis 2-button joysticks	
+		Added a fix for the latest USB/GamePort Logitech joysticks
+		Rewrote joy-pci to shorten it quite a bit, if it doesn't work, it's my fault
+		Fixed PSX doc
+		Added joy-pci module by Raymond Ingles (support for Trident 4DWave and Aureal Vortex)
+		Changed asm/spinlock.h to linux/spinlock.h for 2.3
+		Fixed badly handled kmalloc failure in js_open, bug found by Hartwig Mebold
+		Fixed N64 axis/button counts
+		Fixed axis calibration for the Fusion pad and all unknown Thrustmaster joysticks
+		Fixed 0.8.0.2 2nd joystick lacking power
+		Fixed parameter array lengths in joy-analog, joy-lightning and joy-assassin
+		Added 0.8.0.2 second joystick support to joy-db9.c
+		Joystick will now need CONFIG_M686 on v2.0 kernels to enable RDTSC - because of Cyrix CPUs
+		Updated PSX to David Kuder's latest version
+		Updated N64 to John Dahlstrom's latest version
+		Added kernel 2.3 __setup statements
+		Added SpaceBall 4000 FLX driver by Joseph Krahn
+		Added O_NONBLOCK to jsattach to make it work with newer kernels
+		Added support for the Thrustmaster Fusion GamePad
+		Added conf.modules info to joystick.txt
+		Fixed negative value calibration bug in jscal (fix by John Dahlstrom)
+		Added manpages for the utilities by Dan Gohman
+		Extended checksummed area for SideWinder FFW
+		Added some workarounds and tunings for SW PP into joy-sidewinder.c
+		Updated to 2.2.11 and 2.3.13
+		Fixed jscal to report kernel/jscal versions if they differ
+		Included Shirakura Tetsuya's fix for the Genesis 6button pad
+		Switched to hweight8 bit counting routine in joy-analog.h, thanks to Thomas Sailer
+		Added a 2.3 kernel patch
+		Added John Dahlstrom's N64 controller support via DirectPadPro 5.0 adapters
+		Included Tim Waugh's fix for parport in 2.3 kernels
+		Adapted to wait queue changes in 2.3 kernels
+		Added a missing else to the FFP detection
+		Removed cli()'s from PSX read routine
+		Fixed joy-warrior usecount bug
+		Don't require bidirectional gameport for 0.8.0.2 type joysticks
+		Fixed parport search bug in joy-db9.c
+
+Version 1.2.14 released Mar 08 1999
+
+		Fixed Pentium (TSC) compiletime detection for 2.0 kernels
+		Fixed number of buttons fro TM Millenium 3D Inceptor
+		Don't believe gameport until write (thrustmaster, analog) - trouble on Intel MBs
+		Added check for 1-bit mode in 3-bit mode on SW 3d Pro
+		Added SW 3d Pro switch as a button
+		Added SW 3d Pro ID packet contents printing
+		More robust (against ISA DMA) calibration for joystick.c and joy-analog.c
+		Added packet fixing for 3d Pro without optimization - helps on hostile soundcards
+		SW 3d Pro optimization is disabled in case of many bit errors
+		Made sidewinder detection more immune to bit misses
+		Removed CRTSCTS from warrior serial line config
+		Fixed select() behavior with 0.x interface on 2.1 kernels 
+		Fixed select() behavior with init events on 2.0 kernels 
+		Fixed axis numbering bug in joy-amiga
+		Added workaround for SW Force Feedback Pro ID quirk
+		Fixed in-kernel turbografx driver forgotten initialization
+		Documentation updates
+		Added workaround for SW FreeStyle Pro ID quirk
+		joy-sidewinder is now always using 3-bit mode when possible
+		Reworked SideWinder identification 
+		Fixed button problems on Logitech pads 
+		Rewrote joy-analog driver timing routine to use an ultra-stable dual-timer method
+		Fixed long standing (invisible) RDTSC bug
+		Added SideWinder Force Feedback Wheel support by Benoit Triquet
+		Radically reduced generic timing code
+		Extended joy-thrustmaster to handle any ThrustMaster BSP device
+		Moved to one line discipline per serial joystick type, as a temporary solution
+		Fixed oops when jsattach dies before /dev/jsX is closed
+		Kernel now exports joystick symbols, fixing the 'inkernel mainmodule, modular submodules' bug
+		Fixed Assasin -> Assassin spelling
+		Fixed Magellan initial button state
+		Reimplemented SpaceTec SpaceOrb 360/Spaceball Avenger driver
+		Added Logitech WingMan Warrior driver - joy-warrior.c
+		Fixes in the Magellan driver
+		Added Creative Blaster GamePad driver - joy-creative.c
+		Added Sidewinder FreeStyle Pro driver by Justin Wake
+		Slightly improved Genesis6 timing sequence
+		Enlarged JS_PSX_DELAY to 15 for better compatibility
+		Added Magellan/SpaceMouse driver - joy-magellan.c
+		Made Logitech packet read routine fail on invalid bit change
+		Fixed -p and -s parameters in jscal, and cleaned up the program a bit
+		Rewritten Logitech ADI driver so that it supports any Logitech ADI device
+		Added SpaceTec SpaceOrb 360 driver by David Thompson - joy-spaceorb.c
+
+Version 1.2.13 released Dec 04 1998
+
+		More doc updates
+		Added jscal and jstest to make install
+		Updated Configure.help and Config.in
+		Adopted kernel 2.1.128 Configure.help reformats and spellfixes
+		Changed 'if (ptr)' to 'if (ptr!=NULL)' hopefully everywhere
+		Fixed ThrustMaster joystick support
+		Changed js_[un]register_{port|device} so that kmalloc / kfree are called only once
+		Added checking for kmalloc return value in js_register_{port|device}
+		Added more locking in js_open()
+		Added checking for kmalloc return value in js_open() in joystick.c
+		Added up to 5 buttons support to joy-turbografx.c
+		Cleaned up parallel port mode setting in joy-db9
+		Fixed module parameter ranges in joy-db9.c
+		Added Gravis Blackhawk Digital support
+		Fixed 3-bit mode decoding in joy-sidewinder.c
+		Added autoswitch to 3-bit mode for SW 3D Pro
+		Fixed kernel 2.0.35 patch - joystick/Config.in and joystick/Makefile were missing since 1.2.12
+		Minor doc updates, introduced TODO file
+
+Version 1.2.12 released Oct 24 1998
+
+		Added v0.8.0.2 HW compatibility for Multi sticks in joy-db9.c
+		Fixed a nasty bug in joystick.h 2.0 compatibility defines (spin_lock_irqsave)
+		Made the timings for MSSW3DP more exact - should help initializing it in some cases
+		Fixed parentheses in an example in joystick-api.txt
+		Added js_ops_func->open result checking in js_open
+		Changed all axis triggers to issue 0xff instead of inb(io) - more aggresive, but more compatible
+		Renamed joy-joydump.c back to joydump.c - script renames can cause a headache sometimes ;)
+		Removed the wakeup parport stuff, because of EXCL mode
+		Added hardware calibration for Lightning 4
+		Incorporated Andrea Arcangeli's parport patch
+		Fixed 'make install' in Makefile
+		Changed ChangeLog direction
+
+Version 1.2.11 released Oct 09 1998
+
+		Fixed some warnings/errors that happened during in-kernel compile
+		Moved joystick drivers to a separate directory in the kernel sources
+		Fixed reversed PSX axes
+		Added GNU GPL legal stuff - it's all necessary - I hope I didn't forget anything
+		Fixed TurboGraFX module parameter names
+		joystick.txt updates
+		Fixed PSX buttons 8 and 9
+		Fixes and enhancements in Makefile - added 'make install'
+		Fixed initial values storing in joy-lightning
+		Fixed detection threshold in joy-lightning
+		Fixed parameter parsing in joy-lightning
+		Added 8 button analog pad support	
+		Changed unsigned long long to __u64 in joy-logitech and joy-sidewinder
+		Changed cli()'s to __cli()'s for SMP, also changed flags to unsigned long everywhere
+		Added Gravis Xterminator support
+
+Version 1.2.10 released Sep 12 1998
+
+		Added some FAQs, thus solving the "Operation not supported by device" problem
+		Changed jstest so that it works on 0.8 driver, also made it report driver version
+		Enlarged the timeout values in joy-sidewinder
+		Changed TSC availability check to current CPU from boot CPU for 2.1 kernels
+		Wrote joystick-parport.txt file
+		Added documentation about NES clone gamepads
+		Added support for Steffen Schwenke's TurboGraFX 7-joystick parallel port adapter
+		Added more paranoia to timer calibration routines
+		Fixed reversed both axis for Gravis GamePad Pro
+		Automated prerelease generation
+		Fixed reversed X axis for SW GamePad
+		Changed read routine for Multi joysticks in joy-console.c
+		Added Support for two Gravis GamePad Pro's on one gameport with Y-cable
+		Added ThrustMaster DirectConnect support
+		Fixed off-by one bug in parport numbering
+		Moved init time message printing from js_register device to subdrivers
+		Now using GCC extended position independent syntax for initialization of js_fops
+		Removed js_lseek() from joystick.c - was not needed
+		Cleaned up joy-gravis.c
+		Added 2-button Multi system joystick support to joy-console.c
+		Partially fixed parport open/close stuff in joy-console.c and joy-db9.c
+		Cleaned up joy-console.c and joy-db9.c
+		Fixed comments in joy-assasin.c
+		Moved functions common to Analog, A3D and L4 support to joy-analog.h, avoiding duplicates
+		Changed __initfunc() to __init everywhere
+		Cleaned up the js_read_func calls - no more confusing info[x] variables
+		Added PDPI Lightning 4 card support
+		Safer SWGP detection (the old one could divide by zero)
+
+Version 1.2.9 released Aug 24 1998
+
+		Changed 0.x compatibility code value range to 1-128-255 to avoid problems with ldescent
+		Changed the analog driver to assume 4 buttons for 2 axis joysticks by default
+		Fixes in PSX code
+		Simplified (and for 2.0 fixed) 0.x compatibility code and ioctls as suggested by Brian Gerst
+		Removed -DLINUX in Makefile - was that needed for anything?
+		Moved -D__KERNEL__ in Makefile so that only modules get it
+		Updated jscal - added keyboard input
+		Added JSIOCGNAME test to jstest.c
+		Changed Logitech ThungerPad axis logic again
+		Redid most of automagic calibration
+		Added Brian Gerst's JSIOCGNAME patch
+		Changed all drivers & calibration to use 'native' values internally
+		'make clean' no longer deletes *.diff
+		Removed DST_NONE reference in jscal - caused trouble with glibc2
+
+Version 1.2.8 released Aug 08 1998
+
+		Changed jscal to do calibration per axis and not all at once
+		Fixed timing in jscal
+		Fixed select() behaviour on startup (joystick.c)
+		Added O_NONBLOCK and select() tests to jstest
+		Merged jstest and jstest-old
+		Bumped up the event buffer to 64 events
+		Changed Logitech automagic calibration, hopefully it will work better
+		Added joystick-api.txt from Ragnar Hojland Espinosa
+		Fixed a bug in 2.0 kernel patch for driver/char/Makefile
+		0.x compatibility code now uses corrected values instead of raw, range is 0-128-255
+		Timestamp now is no longer zero on device open to allow cross-device synchronization
+		Atari/Amiga/C=/Amstrad (digital) joystick support added (joy-db9, joy-console)
+		Sega Master System, Genesis, Saturn gamepad support added (joy-db9)
+		NES, PSX gamepad support added (joy-console)
+		joy-nintendo.c was replaced by joy-console.c and joy-db9.c by Andree Borrmann
+		Amiga joystick support added
+		Assasin 3D protocol (FP Gaming and MadCatz) support added (joy-assasin)
+		Better 0.x compatibility, allowing Koules to work
+		Minor enhancements to joydump
+		SW Force Feedback Pro is now being reported as Precision Pro and not vice versa
+		6 buttons are no longer being reported for a 4 button analog joystick
+		Fixed 2nd CH-type hat decoding
+		Fixed Logitech ThunderPad reversed axis	(?)
+
+Version 1.2.7 released Jun 23 1998
+
+		Simplified joy-analog read function
+		Support for gamepads which map buttons 4 and 5 to axis 2 and 3
+
+Version 1.2.6 released Jun 21 1998
+
+		Reordered Gravis GamePad Pro buttons
+		Reordered SNES gamepad buttons
+		Debugged joy-gravis driver with help from Johan Van Gompel
+		Fixed timeout length in joy-analog
+		Fixed FCS hat decoding routine
+		Added info on how to create /dev/js? to joystick.txt
+		Added 2^n command line explanation to joystick.txt
+
+Version 1.2.5 released Jun 19 1998
+
+		Made 'no joysticks found' only appear when it should
+		Added checks for kernel < 2.0
+		Finally and definitely fixed the damn x86_capability thing!
+
+Version 1.2.4 released Jun 18 1998
+
+		Fixed joy-analog command line parsing
+		Removed __initfunc from register/unregister functions
+		Fixed AGGPP name in joy-gravis
+		Ported joy-nintendo to parport for 2.1 kernels
+		Added open/close callbacks
+		Thought to have finally fixed infamous x86_capability problem
+		Added 'no joysticks found' message to joystick.c
+
+Version 1.2.3 released Jun 16 1998
+
+		Extended the documentation
+		Changes in inititialization logic
+		Fix in Gravis read routine
+		Better generic gameport detection
+		Joydump fixes and enhancements
+		Hopefully fixed jscal
+		Added experimental SNES GamePad support
+		Fixed and enhanced SideWinder support
+		Fixed and enhanced Logitech support
+		Merged Linux 2.0 and Linux 2.1 joystick drivers
+
+Version 1.2.2 released Jun 03 1998
+
+		Fixed a bug in Logitech detection code
+		Initialization of SideWinders added
+		Checksumming for SideWinder 3D Pro added
+		Support for Logitech ThunderPad Digital added
+		Fixed conditional compile in main.c
+
+Version 1.2.1 released Jun 02 1998
+
+		Kernel series 2.0 support, albeit untested
+		Extended timeout for analog joysticks to 4 ms
+		Added put_user check into compatibility mode handler
+		Fixed Logitech read packet to return 0 instead of -1 on failure
+		Fixed Config.in
+		Changes in all probe routines to report unknown devices
+		Minor change in SideWinder probe code
+
+Version 1.2.0 released May 31 1998
+
+		More conservative method of detection
+		Better timing, with autodetection and autocalibration
+		Better Logitech handling & detection
+		Better SideWinder handling & detection
+		Multiple joysticks per port support
+		Multiple port support
+		Modularized
+
+Version 1.1.5 released May 31 1998
+
+		Last from 1.1 series
+		Timing changes, and others
+
+Version 1.1.4 released May 25 1998
+
+		CyberMan 2 autocalibration fix
+
+Version 1.1.3 released May 24 1998
+
+		Non-PC architecture support
+		Timing code revised
+		Logitech CyberMan 2 support from Leslie F. Donaldson and Eng-Jon Ong
+
+Version 1.1.2 released May 22 1998
+
+		Preparations for code splitting
+		Standard joystick simplification
+
+Version 1.1.1 released May 20 1998
+
+		Standard joystick output smoothing
+		Minor code cleanups
+		Detection fixes (AGGPP probe was accepting almost anything)
+
+Version 1.1.0 released May 16 1998
+
+		Gravis GamePad Pro support from Benji York
+		Logitech Wingman Extreme Digital support from Pete Chown
+		SideWinder GamePad support from Robert W. Grubbs and Brian Gerst
+		SideWinder FFP support from John Markus Bjorndalen and Boris Muehmer
+		SideWinder 3d Pro support from Brian Gerst
+		CH Flighstick buttons and hats support
+		ThrustMaster FCS hat support
+		Pentium TSC timing
+		Joystick BH removed
+		Major restructuralization, partial rewrite
+
+Version 1.0.9 released May 05 1998
+
+		Fix max number of module parameters
+		Fix for compatibility mode - don't do correction
+
+Version 1.0.8 released Apr 26 1998
+
+		Removed various trailing spaces
+		Fix to report number of buttons correctly
+		Broken line correction needs 2 coefs less
+		The range is now -32727..0..32767
+		Changing the __u16 data to __s16 in event packet
+
+Version 1.0.7 released Mar 26 1998
+
+		Stable release
+		Cosmetic changes & cleanup
+		Compatibility mode fix - refresh data after open
+		Linux 2.1.89 poll update
+		Readme update
+
+Version 1.0.6 released Mar 23 1998
+
+		Cosmetic changes
+		Finally leaving ALPHA and going beta
+		Using KERN_* printk() codes
+		Init value after recalibration bug fixed
+		Backward compatibility with old js driver added
+
+Version 1.0.5 released Oct 04 1997
+
+		Better jscal
+		Fixes in calibration routines
+
+Version 1.0.4 released Aug 07 1997
+
+		Linux 2.1.25 select => poll changes
+		Better cli()/sti() handling
+		Kernel command line & module configuration support
+
+Version 1.0.3 released Jan 17 1997
+
+		Lost event changest & fixes
+		Fix in js_do_bh - no more zero values for axes
+		Tail cutting logic changes & fixes
+
+Version 1.0.2 released Jan 13 1997
+
+		Works, many bugs fixed, more yet to come
+
+Version 1.0.1 released Jan 11 1997
+
+		Compiles but doesn't work
+		Complete rewrite
+
+Version 1.0.0
+
+		Event approach started
+
+Version 0.9.2	
+
+		Fixed a typo causing nothing to be working
+
+Version 0.9.1	
+
+		Some fixes and cleanups in read function
+		Timeouts back separated for easier setting
+		Broken line correction added for broken joysticks (eg. JB-500)
+		Fix in read function to allow zero results
+		completely disconnected
+		Fix for broken joysticks - return with -ENODEV only if joystick
+		Fix for TurboFire joysticks - read buttons always
+		Semaphore and many cli()'s removed
+		Fuzz correction added
+		Use of verify_area result codes
+		IOCTLs now obey general Linux IOCTL rules ('j' letter assigned)
+
+Version 0.9.0	
+
+		/dev/js? can be read simultaneously by several processes
+		Correct error for lseek
+		Reads may happen even for unwhole record size => cat /dev/js0 works
+		CPU speed independent timeouts
+		Real support for 3-axis joysticks
+		New joystick calibration code
+		New read function that allows two axes have same value
+		Based on 0.7.3
+
+Version 0.9	
+
+		Removed 'save_busy'. Just set busy to 1.
+		Better ioctl names. Kept binary compatibility.
+		Changed variable names to lower case. Kept binary compatibility.
+		Fixed xntp timer adjust during joystick timer0 bug
+		Removed semaphore bug (we can dump the lot I think)
+		Reformatted to resemble Linux coding standard
+		Ported to 2.1.x
+
+Version 0.8	
+
+		Changes to compile correctly under 1.3 in kernel or as module
+		Use of MOD_(INC|DEC)_USE_COUNT
+		General source/comment cleanup
+		Made js_init fail if it finds zero joysticks
+		Cleaned up #includes to allow #include of joystick.h with gcc -Wall and from g++
+		New read loop
+
+Version 0.7.3	
+
+		Added I/O port registration, cleaned up code
+		Better detection announcement
+		Fix for detection of 3-axis joysticks
+		Separated out joystick detection/counting, cleanup
+		Include directives changed for joystick.h
+
+Version 0.7.2	
+
+		Add include so module compiles under recent kernels
+
+Version 0.7.1	
+
+		Fix bug in reading button state of js1
+
+Version 0.7	
+
+		Support for modules
+
+Version 0.6	
+
+		cleanup: indented code, fixed some typos, wrote man page, etc ...
+		Made necessary changes to work with 0.99.15 kernel (and hopefully 1.0). Also did some
+
+Version 0.5	
+
+		Upgraded the driver to the 0.99.9 kernel, added joystick support to the make config options,
+		updated the driver to return the buttons as positive logic, and read both axis at once
+		and added some new ioctls.
+
+Version 0.4	
+
+		Linux 0.99.6 and fixed race condition in js_read.  After looking at a schematic of a joystick card
+		it became apparent that any write to the joystick port started ALL the joystick one shots. If the
+		one that we are reading is short enough and the first one to be read, the second one will return
+		bad data if it's one shot has not expired when the joystick port is written for the second time.
+		Thus solves the mystery delay problem in 0.2!
+
+Version 0.3	
+
+		Modified scaling to use ints to prevent kernel panics 8-)
+
+Version 0.2	
+
+		Added scaling ioctl
+		Added delay between measuring joystick axis
+		Added multi-joystick support (minor 0 and 1)
+
+Version 0.1 released Aug 02 1996
+
+		Works but lacks multi-joystick support
+		Original version
